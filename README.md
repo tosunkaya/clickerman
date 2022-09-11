@@ -1,5 +1,8 @@
 # clickerman
-The scripts can be installed via a script manager (e.g. violentmonkey) from `https://raw.githubusercontent.com/Kafva/clickerman/main/<name>.user.js`.
+The scripts can be installed via a script manager (e.g. violentmonkey) from the following links 
+
+* [click](https://raw.githubusercontent.com/Kafva/clickerman/main/click.user.js)
+* [olc](https://raw.githubusercontent.com/Kafva/clickerman/main/olc.user.js)
 
 The `click.user.js` script can also be imported as a standalone extension. To install the extension in a Chromium based browser, go to `chrome://extensions`, enable *Developer mode*, click *Load unpacked* and choose the `./clickerman` folder.
 
