@@ -12,6 +12,7 @@
 // @include      https://*.google.se/*
 // @include      https://*.twitch.tv/*
 // @exclude      https://*.google.com/recaptcha/*
+// @exclude      https://*.google.com/maps/*
 // ==/UserScript==
 
 // For development: 
