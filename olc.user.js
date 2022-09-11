@@ -48,28 +48,3 @@
 	console.log("Custom key bindings applied")
 }, 1000)
 })();
-
-// TODO sync with system clipboard somehow...
-//window.addEventListener( 'keydown', (event) => {
-//	if (event.key == 'y'){
-//		var keyboardEvent = document.createEvent('KeyboardEvent');
-//		var initMethod = typeof keyboardEvent.initKeyboardEvent !== 'undefined' ? 'initKeyboardEvent' : 'initKeyEvent';
-//		keyboardEvent[initMethod](
-//		  'keydown', // event type: keydown, keyup, keypress
-//		  true, // bubbles
-//		  false, // cancelable
-//		  window, // view: should be window
-//		  false, // ctrlKey
-//		  false, // altKey
-//		  false, // shiftKey
-//		  false, // metaKey
-//		  67, // keyCode: unsigned long - the virtual key code, else 0
-//		  99, // charCode: unsigned long - the Unicode character associated with the depressed key, else 0
-//		);
-//		document.dispatchEvent(keyboardEvent);
-//		console.log("Copied!")
-//	}
-//	
-//})
-
-
