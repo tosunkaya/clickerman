@@ -9,6 +9,7 @@
 // @icon         https://i.imgur.com/ijdw1j9.png
 // @include      https://*.youtube.com/*
 // @include      https://*.google.com/*
+// @include      https://*.google.se/*
 // @include      https://*.twitch.tv/*
 // @exclude      https://*.google.com/recaptcha/*
 // ==/UserScript==
@@ -24,8 +25,8 @@ const DEBUG = true
 const CLICK_INTERVALL = 1000
 const debug = (msg) => { DEBUG && console.log(msg); }
 
-const GOOGLE_CONSENT = "[aria-label='Show me the privacy reminder later'],[aria-label='Got it'],[aria-label='No, thanks'],[aria-label='No thanks'],[aria-label='Agree to the use of cookies and other data for the purposes described']"
-const TWITCH_BONUS = ".claimable-bonus__icon.tw-flex"
+const GOOGLE_CONSENT = "[aria-label='Show me the privacy reminder later'],[aria-label='Got it'],[aria-label='No, thanks'],[aria-label='No thanks'],[aria-label='Agree to the use of cookies and other data for the purposes described'],[aria-label='Godkänn att cookies och annan data används för de ändamål som beskrivs']"
+const TWITCH_BONUS = ".claimable-bonus__icon.tw-flex,[aria-label='Claim Bonus']"
 const YT_STILL_WATCHING = ".style-scope.yt-button-renderer.style-blue-text.size-default[aria-label='Yes']"
 
 /// Note that some pop-ups may be iframes from different domainis (e.g. consent.youtube.com)
