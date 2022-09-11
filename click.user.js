@@ -21,7 +21,7 @@
 // @grant         GM_addStyle
 // ==/UserScript==
 
-// For development: 
+// For development:
 //  file:///Users/jonas/Repos/clickerman/click.user.js
 
 // Build for Firefox
@@ -44,9 +44,9 @@ const YT_STILL_WATCHING = ".style-scope.yt-button-renderer.style-blue-text.size-
 
 const GSEARCH     = 'Before you continue to Google Search'
 const GSEARCH_SE  = 'Innan du fortsätter till Google Sök'
-const GOOGLE_CONSENT = `[aria-label='Show me the privacy reminder later'],[aria-label='Got it'],[aria-label='No, thanks'],[aria-label='Agree to the use of cookies and other data for the purposes described'],[aria-label='Godkänn att cookies och annan data används för de ändamål som beskrivs'],[title='${GSEARCH}'],[title='${GSEARCH_SE}'],[aria-label='${GSEARCH}'],[aria-label='${GSEARCH_SE}'],tp-yt-paper-button[aria-label='Reject the use of cookies and other data for the purposes described']`
+const GOOGLE_CONSENT = `[aria-label='Show me the privacy reminder later'],[aria-label='Got it'],[aria-label='No, thanks'],[aria-label='Agree to the use of cookies and other data for the purposes described'],[aria-label='Godkänn att cookies och annan data används för de ändamål som beskrivs'],[title='${GSEARCH}'],[title='${GSEARCH_SE}'],[aria-label='${GSEARCH}'],[aria-label='${GSEARCH_SE}'],tp-yt-paper-button[aria-label='Reject the use of cookies and other data for the purposes described'],[aria-label='Reject all']`
 
-/// Note that some pop-ups can be iframes from different 
+/// Some pop-ups can be iframes from different
 /// domainis (e.g. consent.youtube.com)
 /// to click these requires { "all_frames": true } and the
 /// domain to appear in the "matches" inside manifest.json
@@ -88,19 +88,19 @@ window.onload = () => {
   const IS_LIVESTREAM = document.querySelector(".view-count")
       ?.innerText.match(/watching now/) != null
   const IS_IFRAME     = window.self != window.top
-  
+
   if (window.location.host.match(".*.(youtube|google).com")) {
     if (!IS_LIVESTREAM && !IS_IFRAME){
       auto_click(
-        YT_STILL_WATCHING + "," + 
+        YT_STILL_WATCHING + "," +
         GOOGLE_CONSENT  +
         get_agree_button_selector()
       );
-    } 
+    }
   }
 
   // Initialised
-  debug("clickerman is running..." + 
+  debug("clickerman is running..." +
     (IS_LIVESTREAM ? " (livestream)" : "") +
     (IS_IFRAME ? ` (iframe - ${window.location.href})` : "")
   );
