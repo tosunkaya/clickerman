@@ -32,7 +32,7 @@ const YT_STILL_WATCHING = ".style-scope.yt-button-renderer.style-blue-text.size-
 /// Note that some pop-ups may be iframes from different domainis (e.g. consent.youtube.com)
 /// to click these requires { "all_frames": true } and the
 /// domain to appear in the "matches" inside manifest.json
-const auto_click = (selectors) => {
+const auto_click = (selector) => {
 
 	// Only click each element once within a X second interval
 	let clicked = new Set()
@@ -41,16 +41,14 @@ const auto_click = (selectors) => {
 	}, DUPLICATE_CLICK_INTERVALL)
 
 	const click_all = () => {
-		for (const selector of selectors){
-			const btns = document.querySelectorAll(selector);
-			btns?.forEach( (b) => {
-				if ( !clicked.has(b.innerHTML) ) {
-					b.click();
-					clicked.add(b.innerHTML)
-					debug(`Clicked: '${b.innerHTML}' based on ${selector}`);
-				}
-			});
-		}
+		const btns = document.querySelectorAll(selector);
+		btns?.forEach( (b) => {
+			if ( !clicked.has(b.innerHTML) ) {
+				b.click();
+				clicked.add(b.innerHTML)
+				debug(`Clicked: '${b.innerHTML}' based on ${selector}`);
+			}
+		});
 	}
 
 	// Execute once immediatelly
@@ -83,11 +81,15 @@ window.onload = () => {
 	
 	if ( window.location.host.match(".*.(youtube|google).com") ){
 		if (!IS_LIVESTREAM && !IS_IFRAME){
-			auto_click([YT_STILL_WATCHING, GOOGLE_CONSENT  + get_agree_button_selector() ]);
+			auto_click(
+				YT_STILL_WATCHING + "," + 
+				GOOGLE_CONSENT  +
+				get_agree_button_selector()
+			);
 		} 
 	}
 	else if ( window.location.host.match(".*.twitch.com") ){
-		auto_click([TWITCH_BONUS]);
+		auto_click(TWITCH_BONUS);
 	}
 
 	// Initialised
