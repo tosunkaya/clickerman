@@ -6,7 +6,7 @@
 // @namespace    https://raw.githubusercontent.com/Kafva/
 // @downloadUrl  https://raw.githubusercontent.com/Kafva/clickerman/main/olc.user.js
 // @updateUrl    https://raw.githubusercontent.com/Kafva/clickerman/main/olc.user.js
-// @icon         https://i.imgur.com/ijdw1j9.png
+// @icon         https://www.overleaf.com/favicon.ico
 // @include      https://*.overleaf.com/*
 // ==/UserScript==
 
