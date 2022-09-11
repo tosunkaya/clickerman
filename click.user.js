@@ -16,6 +16,7 @@
 // @exclude      https://mail.google.com/*
 // @exclude      https://*.client-channel.google.com/*
 // @exclude      https://*.google.com/recaptcha/*
+// @exclude      https://*.google.com/forms/*
 // @exclude      https://*.google.com/maps/*
 // ==/UserScript==
 
@@ -24,7 +25,7 @@
 
 // Build for Firefox
 //  web-ext build
-//  web-ext sign --api-key $(cat ~/Config/secrets/mozilla_issuer) --api-secret $(cat ~/Config/secrets/mozilla.jwt)
+//  web-ext sign --api-key $(cat mozilla_issuer) --api-secret $(cat mozilla.jwt)
 
 const DEBUG = true
 const CLICK_INTERVALL = 1000
@@ -41,9 +42,9 @@ const auto_click = (selector) => {
 	const click_all = () => {
 		const btns = document.querySelectorAll(selector);
 		btns?.forEach( (b) => {
-				b.click();
-				b.remove();
-				debug(`Clicked: '${b.innerHTML}' based on ${selector}`);
+			b.click();
+			b.remove();
+			debug(`Clicked: '${b.innerHTML}' based on ${selector}`);
 		});
 	}
 
