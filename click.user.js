@@ -14,7 +14,7 @@
 
 // For development use:
 // @require      file:///Users/jonas/Repos/clickerman/click.js
-
+//
 // Build for Firefox
 //  web-ext build
 //  web-ext sign --api-key $(cat ~/Config/secrets/mozilla_issuer) --api-secret $(cat ~/Config/secrets/mozilla.jwt)
