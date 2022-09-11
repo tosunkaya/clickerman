@@ -7,14 +7,14 @@
 // @downloadUrl  https://raw.githubusercontent.com/Kafva/clickerman/main/click.user.js
 // @updateUrl    https://raw.githubusercontent.com/Kafva/clickerman/main/click.user.js
 // @icon         https://i.imgur.com/ijdw1j9.png
-// @include 	 https://*.youtube.com/*
-// @include 	 https://*.google.com/*
-// @include 	 https://*.twitch.tv/*
+// @include      https://*.youtube.com/*
+// @include      https://*.google.com/*
+// @include      https://*.twitch.tv/*
 // ==/UserScript==
 
-// For development use:
-// @require      file:///Users/jonas/Repos/clickerman/click.js
-//
+// For development: 
+// 	file:///Users/jonas/Repos/clickerman/click.user.js
+
 // Build for Firefox
 //  web-ext build
 //  web-ext sign --api-key $(cat ~/Config/secrets/mozilla_issuer) --api-secret $(cat ~/Config/secrets/mozilla.jwt)
