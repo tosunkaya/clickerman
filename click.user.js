@@ -35,7 +35,7 @@ const YT_STILL_WATCHING = ".style-scope.yt-button-renderer.style-blue-text.size-
 
 const GSEARCH     = 'Before you continue to Google Search'
 const GSEARCH_SE  = 'Innan du fortsätter till Google Sök'
-const GOOGLE_CONSENT = `[aria-label='Show me the privacy reminder later'],[aria-label='Got it'],[aria-label='No, thanks'],[aria-label='No thanks'],[aria-label='Agree to the use of cookies and other data for the purposes described'],[aria-label='Godkänn att cookies och annan data används för de ändamål som beskrivs'],[title='${GSEARCH}'],[title='${GSEARCH_SE}'],[aria-label='${GSEARCH}'],[aria-label='${GSEARCH_SE}']`
+const GOOGLE_CONSENT = `[aria-label='Show me the privacy reminder later'],[aria-label='Got it'],[aria-label='No, thanks'],[aria-label='Agree to the use of cookies and other data for the purposes described'],[aria-label='Godkänn att cookies och annan data används för de ändamål som beskrivs'],[title='${GSEARCH}'],[title='${GSEARCH_SE}'],[aria-label='${GSEARCH}'],[aria-label='${GSEARCH_SE}'],tp-yt-paper-button[aria-label='Reject the use of cookies and other data for the purposes described']`
 
 /// Note that some pop-ups may be iframes from different domainis (e.g. consent.youtube.com)
 /// to click these requires { "all_frames": true } and the
