@@ -34,13 +34,12 @@ const IS_LIVESTREAM = document.querySelector("yt-live-chat-renderer") != null
 /// Note that some pop-ups may are iframes from different domainis (e.g. consent.youtube.com)
 /// to click these requires { "all_frames": true } and the
 /// domain to appear in the "matches" inside manifest.json
-async function autoClick(selectors) {
+async function auto_click(selectors) {
 
 	// Only click each element once within a X second interval
 	let clicked = new Set()
 	setInterval( () => {
 		clicked = new Set();
-		debug("Clearing clicked set...");
 	}, DUPLICATE_CLICK_INTERVALL)
 
 	while (true) {
@@ -60,12 +59,32 @@ async function autoClick(selectors) {
 	}
 }
 
+const get_agree_button_selector = () => {
+	// The agree button on google has an obfuscated class name
+	let selector = ""
+	if ( document.querySelector("[title='Before you continue to Google Search']") != null ) {
+		document.querySelectorAll("button").forEach( btn => {
+			// We can't select the div directly since the 'agree' and 'customise'
+			// divs have the same selector
+			btn.querySelectorAll("div").forEach( d => {
+				if (d.innerText == "I agree"){
+					selector = `#${btn.id}`;
+				}
+			})
+
+		})
+	}
+	return selector == "" ? "" : "," + selector
+}
+
 if ( window.location.host.match(".*.(youtube|google).com") ){
-	IS_LIVESTREAM || autoClick([YT_STILL_WATCHING, GOOGLE_CONSENT]);
+	if (!IS_LIVESTREAM){
+		auto_click([YT_STILL_WATCHING, GOOGLE_CONSENT  + get_agree_button_selector() ]);
+	} 
 }
 else if ( window.location.host.match(".*.twitch.com") ){
-	autoClick([TWITCH_BONUS]);
+	auto_click([TWITCH_BONUS]);
 }
 
 // Initialised
-debug(`clickerman is${IS_LIVESTREAM ? "" : " not"} running...`);
+debug(`clickerman is${!IS_LIVESTREAM ? "" : " not"} running...`);
