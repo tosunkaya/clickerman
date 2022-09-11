@@ -51,58 +51,58 @@ const GOOGLE_CONSENT = `[aria-label='Show me the privacy reminder later'],[aria-
 /// to click these requires { "all_frames": true } and the
 /// domain to appear in the "matches" inside manifest.json
 const auto_click = (selector) => {
-  const click_all = () => {
-    const btns = document.querySelectorAll(selector);
-    btns?.forEach( (b) => {
-      b.click();
-      b.remove();
-      debug(`Clicked: '${b.innerHTML}' based on ${selector}`);
-    });
-  }
+	const click_all = () => {
+		const btns = document.querySelectorAll(selector);
+		btns?.forEach( (b) => {
+			b.click();
+			b.remove();
+			debug(`Clicked: '${b.innerHTML}' based on ${selector}`);
+		});
+	}
 
-  // Execute once immediatelly
-  click_all()
-  setInterval(click_all, CLICK_INTERVALL)
+	// Execute once immediatelly
+	click_all()
+	setInterval(click_all, CLICK_INTERVALL)
 }
 
 const get_agree_button_selector = () => {
-  // The agree button on google has an obfuscated class name
-  let selector = ""
-  if ( document.querySelector(GOOGLE_CONSENT) != null ) {
-    document.querySelectorAll("button")?.forEach( btn => {
-      // We can't select the div directly since the 'agree' and 'customise'
-      // divs have the same selector
-      btn.querySelectorAll("div").forEach( d => {
-        if (d.innerText == "I agree" || d.innerText == "Jag godkänner"){
-          selector = `#${btn.id}`;
-        }
-      })
+	// The agree button on google has an obfuscated class name
+	let selector = ""
+	if ( document.querySelector(GOOGLE_CONSENT) != null ) {
+		document.querySelectorAll("button")?.forEach( btn => {
+			// We can't select the div directly since the 'agree' and 'customise'
+			// divs have the same selector
+			btn.querySelectorAll("div").forEach( d => {
+				if (d.innerText == "I agree" || d.innerText == "Jag godkänner"){
+					selector = `#${btn.id}`;
+				}
+			})
 
-    })
-  }
-  return selector == "" ? "" : "," + selector
+		})
+	}
+	return selector == "" ? "" : "," + selector
 }
 
 
 window.onload = () => {
-  const IS_LIVESTREAM = document.querySelector(".view-count")
-      ?.innerText.match(/watching now/) != null
-  const IS_IFRAME     = window.self != window.top
+	const IS_LIVESTREAM = document.querySelector(".view-count")
+		?.innerText.match(/watching now/) != null
+	const IS_IFRAME     = window.self != window.top
 
-  if (window.location.host.match(".*.(youtube|google).com")) {
-    if (!IS_LIVESTREAM && !IS_IFRAME){
-      auto_click(
-        YT_STILL_WATCHING + "," +
+	if (window.location.host.match(".*.(youtube|google).com")) {
+		if (!IS_LIVESTREAM && !IS_IFRAME){
+			auto_click(
+				YT_STILL_WATCHING + "," +
         GOOGLE_CONSENT  +
         get_agree_button_selector()
-      );
-    }
-  }
+			);
+		}
+	}
 
-  // Initialised
-  debug("clickerman is running..." +
+	// Initialised
+	debug("clickerman is running..." +
     (IS_LIVESTREAM ? " (livestream)" : "") +
     (IS_IFRAME ? ` (iframe - ${window.location.href})` : "")
-  );
+	);
 }
 
