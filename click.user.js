@@ -29,7 +29,7 @@ const GOOGLE_CONSENT = "[aria-label='Show me the privacy reminder later'],[aria-
 const TWITCH_BONUS = ".claimable-bonus__icon.tw-flex"
 const YT_STILL_WATCHING = ".style-scope.yt-button-renderer.style-blue-text.size-default[aria-label='Yes']"
 
-/// Note that some pop-ups may are iframes from different domainis (e.g. consent.youtube.com)
+/// Note that some pop-ups may be iframes from different domainis (e.g. consent.youtube.com)
 /// to click these requires { "all_frames": true } and the
 /// domain to appear in the "matches" inside manifest.json
 const auto_click = (selectors) => {
