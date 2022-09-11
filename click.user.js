@@ -22,7 +22,7 @@
 
 const DEBUG = true
 const CLICK_INTERVALL = 1000
-const DUPLICATE_CLICK_INTERVALL = 1000 * 10
+const DUPLICATE_CLICK_INTERVALL = 1000 * 20
 const debug = (msg) => { DEBUG && console.log(msg); }
 
 const GOOGLE_CONSENT = "[aria-label='Show me the privacy reminder later'],[aria-label='Got it'],[aria-label='No, thanks'],[aria-label='No thanks'],[aria-label='Agree to the use of cookies and other data for the purposes described']"
@@ -32,7 +32,7 @@ const YT_STILL_WATCHING = ".style-scope.yt-button-renderer.style-blue-text.size-
 /// Note that some pop-ups may are iframes from different domainis (e.g. consent.youtube.com)
 /// to click these requires { "all_frames": true } and the
 /// domain to appear in the "matches" inside manifest.json
-async function auto_click(selectors) {
+const auto_click = (selectors) => {
 
 	// Only click each element once within a X second interval
 	let clicked = new Set()
@@ -40,7 +40,7 @@ async function auto_click(selectors) {
 		clicked = new Set();
 	}, DUPLICATE_CLICK_INTERVALL)
 
-	while (true) {
+	setInterval( () => {
 		for (const selector of selectors){
 			const btns = document.querySelectorAll(selector);
 			if (btns) {
@@ -53,8 +53,7 @@ async function auto_click(selectors) {
 				});
 			}
 		}
-		await new Promise(r => setTimeout(r, CLICK_INTERVALL));
-	}
+	}, CLICK_INTERVALL)
 }
 
 const get_agree_button_selector = () => {
