@@ -23,11 +23,9 @@ const DEBUG=true
 const CLICK_INTERVALL = 1000
 const DUPLICATE_CLICK_INTERVALL = 1000 * 10
 
+
 const GOOGLE_CONSENT = "[aria-label='Show me the privacy reminder later'],[aria-label='Got it'],[aria-label='No, thanks'],[aria-label='No thanks'],[aria-label='Agree to the use of cookies and other data for the purposes described']"
-
 const TWITCH_BONUS = ".claimable-bonus__icon.tw-flex"
-
-// We need a selector more specific than the classes to avoid FPs
 const YT_STILL_WATCHING = ".style-scope.yt-button-renderer.style-blue-text.size-default[aria-label='Yes']"
 
 const debug = (msg) => { DEBUG && console.log(msg); }
