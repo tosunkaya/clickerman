@@ -11,6 +11,11 @@
 // @include      https://*.google.com/*
 // @include      https://*.google.se/*
 // @include      https://*.twitch.tv/*
+// @exclude      https://hangouts.google.com/*
+// @exclude      https://ogs.google.com/*
+// @exclude      https://contacts.google.com/*
+// @exclude      https://mail.google.com/*
+// @exclude      https://0.client-channel.google.com/*
 // @exclude      https://*.google.com/recaptcha/*
 // @exclude      https://*.google.com/maps/*
 // ==/UserScript==
@@ -52,12 +57,12 @@ const auto_click = (selector) => {
 const get_agree_button_selector = () => {
 	// The agree button on google has an obfuscated class name
 	let selector = ""
-	if ( document.querySelector("[title='Before you continue to Google Search']") != null ) {
+	if ( document.querySelector("[title='Before you continue to Google Search'],[title='Innan du fortsätter till Google Sök']") != null ) {
 		document.querySelectorAll("button")?.forEach( btn => {
 			// We can't select the div directly since the 'agree' and 'customise'
 			// divs have the same selector
 			btn.querySelectorAll("div").forEach( d => {
-				if (d.innerText == "I agree"){
+				if (d.innerText == "I agree" || d.innerText == "Jag godkänner"){
 					selector = `#${btn.id}`;
 				}
 			})
@@ -88,7 +93,7 @@ window.onload = () => {
 	// Initialised
 	debug("clickerman is running..." + 
 		(IS_LIVESTREAM ? " (livestream)" : "") +
-		(IS_IFRAME ? " (iframe)" : "")
+		(IS_IFRAME ? ` (iframe - ${window.location.href})` : "")
 	);
 }
 
