@@ -69,4 +69,4 @@ else if ( window.location.host.match(".*.twitch.com") ){
 }
 
 // Initialised
-debug("clickerman (aaabaa) is running...");
+debug("clickerman is running...");
