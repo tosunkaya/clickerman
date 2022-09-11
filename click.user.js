@@ -3,7 +3,7 @@
 // @version      0.1
 // @description  Autoclicker for YouTube etc.
 // @author       Kafva
-// @namespace    https://raw.githubusercontent.com/Kafva/ 
+// @namespace    https://raw.githubusercontent.com/Kafva/
 // @downloadUrl  https://raw.githubusercontent.com/Kafva/clickerman/main/click.js
 // @updateUrl    https://raw.githubusercontent.com/Kafva/clickerman/main/click.js
 // @icon         https://i.imgur.com/ijdw1j9.png
@@ -23,7 +23,7 @@ const DEBUG=true
 const CLICK_INTERVALL = 1000
 const DUPLICATE_CLICK_INTERVALL = 1000 * 10
 
-const GOOGLE_CONSENT = "[aria-label='Show me the privacy reminder later'],[aria-label='Got it'],[aria-label='No, thanks'],[aria-label='No thanks'],[aria-label='Agree to the use of cookies and other data for the purposes described']" 
+const GOOGLE_CONSENT = "[aria-label='Show me the privacy reminder later'],[aria-label='Got it'],[aria-label='No, thanks'],[aria-label='No thanks'],[aria-label='Agree to the use of cookies and other data for the purposes described']"
 
 const TWITCH_BONUS = ".claimable-bonus__icon.tw-flex"
 
@@ -32,27 +32,27 @@ const YT_STILL_WATCHING = ".style-scope.yt-button-renderer.style-blue-text.size-
 
 const debug = (msg) => { DEBUG && console.log(msg); }
 
-/// Note that some pop-ups may are iframes from different domainis (e.g. consent.youtube.com) 
-/// to click these requires { "all_frames": true } and the 
+/// Note that some pop-ups may are iframes from different domainis (e.g. consent.youtube.com)
+/// to click these requires { "all_frames": true } and the
 /// domain to appear in the "matches" inside manifest.json
 async function autoClick(selectors) {
 
 	// Only click each element once within a X second interval
 	let clicked = new Set()
-	setInterval( () => { 
-		clicked = new Set(); 
-		debug("Clearing clicked set..."); 
+	setInterval( () => {
+		clicked = new Set();
+		debug("Clearing clicked set...");
 	}, DUPLICATE_CLICK_INTERVALL)
 
 	while (true) {
-		for (let selector of selectors){
-			let btns = document.querySelectorAll(selector);
+		for (const selector of selectors){
+			const btns = document.querySelectorAll(selector);
 			if (btns) {
-				btns.forEach( (b) => { 
+				btns.forEach( (b) => {
 					if ( !clicked.has(b.innerHTML) ) {
 						b.click();
 						clicked.add(b.innerHTML)
-						debug(`Clicked: '${b.innerHTML}' based on ${selector}`); 
+						debug(`Clicked: '${b.innerHTML}' based on ${selector}`);
 					}
 				});
 			}
@@ -61,10 +61,10 @@ async function autoClick(selectors) {
 	}
 }
 
-if ( window.location.host.match(".*\.(youtube|google)\.com") ){
+if ( window.location.host.match(".*.(youtube|google).com") ){
 	autoClick([YT_STILL_WATCHING, GOOGLE_CONSENT]);
 }
-else if ( window.location.host.match(".*\.twitch\.com") ){
+else if ( window.location.host.match(".*.twitch.com") ){
 	autoClick([TWITCH_BONUS]);
 }
 
