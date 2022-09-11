@@ -10,12 +10,11 @@
 // @include      https://*.youtube.com/*
 // @include      https://*.google.com/*
 // @include      https://*.google.se/*
-// @include      https://*.twitch.tv/*
 // @exclude      https://hangouts.google.com/*
 // @exclude      https://ogs.google.com/*
 // @exclude      https://contacts.google.com/*
 // @exclude      https://mail.google.com/*
-// @exclude      https://0.client-channel.google.com/*
+// @exclude      https://*.client-channel.google.com/*
 // @exclude      https://*.google.com/recaptcha/*
 // @exclude      https://*.google.com/maps/*
 // ==/UserScript==
@@ -32,7 +31,6 @@ const CLICK_INTERVALL = 1000
 const debug = (msg) => { DEBUG && console.log(msg); }
 
 const GOOGLE_CONSENT = "[aria-label='Show me the privacy reminder later'],[aria-label='Got it'],[aria-label='No, thanks'],[aria-label='No thanks'],[aria-label='Agree to the use of cookies and other data for the purposes described'],[aria-label='Godkänn att cookies och annan data används för de ändamål som beskrivs']"
-const TWITCH_BONUS = ".claimable-bonus__icon.tw-flex,[aria-label='Claim Bonus']"
 const YT_STILL_WATCHING = ".style-scope.yt-button-renderer.style-blue-text.size-default[aria-label='Yes']"
 
 /// Note that some pop-ups may be iframes from different domainis (e.g. consent.youtube.com)
@@ -85,9 +83,6 @@ window.onload = () => {
 				get_agree_button_selector()
 			);
 		} 
-	}
-	else if ( window.location.host.match(".*.twitch.com") ){
-		auto_click(TWITCH_BONUS);
 	}
 
 	// Initialised
