@@ -19,15 +19,26 @@
 // file:///Users/jonas/Repos/clickerman/discord-theme.user.js
 // GM_addStyle(GM_getResourceText("css"));
 
+
+
+// (async () => {  
+// 	await new Promise(r => setTimeout(r, 3000)); 
+// 	document.querySelector('#online-tab,div[class^="pageWrapper"]').style.backgroundColor='#23283d'	
+// })();
+
+
 // Copied from css/discord.css
 // (Hot-reloading does not track changes to @resources)
 GM_addStyle(`
-/* https://github.com/NYRI4/Comfy/blob/master/_variables.scss */
 #online-tab,div[class^="pageWrapper"] {
-	/* The second selector works in the debug console but not in practice... */
+	/* The second selector works in the debug console but not in practice... 
+	 * It works if we use a delay but that does not work if we load the page
+	 * after the event has fired and is not a preferable solution
+	 * */
 	background-color: #23283d;
 }
 
+/* https://github.com/NYRI4/Comfy/blob/master/_variables.scss */
 .theme-dark {
     --background-tertiary: #101320;
     --background-secondary: #1e2233;
