@@ -3,6 +3,7 @@ The scripts can be installed via a script manager (e.g. violentmonkey) from the 
 
 * [click](https://raw.githubusercontent.com/Kafva/clickerman/main/click.user.js)
 * [olc](https://raw.githubusercontent.com/Kafva/clickerman/main/olc.user.js)
+* [discord-theme](https://raw.githubusercontent.com/Kafva/clickerman/main/discord-theme.user.js)
 
 The `click.user.js` script can also be imported as a standalone extension. To install the extension in a Chromium based browser, go to `chrome://extensions`, enable *Developer mode*, click *Load unpacked* and choose the `./clickerman` folder.
 
