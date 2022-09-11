@@ -19,8 +19,7 @@
    "https://*.twitch.tv/*" 
   ],
  "js": [
-   "dark.js", 
-   "click.js"
+   "click.user.js"
   ],
  "all_frames": true
  }

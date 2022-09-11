@@ -3,12 +3,17 @@
 // @version      0.1
 // @description  Autoclicker for YouTube etc.
 // @author       Kafva
-// @require      file:///Users/jonas/Repos/clickerman/click.js
+// @namespace    https://raw.githubusercontent.com/Kafva/ 
+// @downloadUrl  https://raw.githubusercontent.com/Kafva/clickerman/main/click.js
+// @updateUrl    https://raw.githubusercontent.com/Kafva/clickerman/main/click.js
 // @icon         https://i.imgur.com/ijdw1j9.png
 // @include 	 https://*.youtube.com/*
 // @include 	 https://*.google.com/*
 // @include 	 https://*.twitch.tv/*
 // ==/UserScript==
+
+// For development use:
+// @require      file:///Users/jonas/Repos/clickerman/click.js
 
 // Build for Firefox
 //  web-ext build
