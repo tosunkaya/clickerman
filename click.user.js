@@ -10,6 +10,7 @@
 // @include      https://*.youtube.com/*
 // @include      https://*.google.com/*
 // @include      https://*.twitch.tv/*
+// @exclude      https://*.google.com/recaptcha/*
 // ==/UserScript==
 
 // For development: 
@@ -19,7 +20,7 @@
 //  web-ext build
 //  web-ext sign --api-key $(cat ~/Config/secrets/mozilla_issuer) --api-secret $(cat ~/Config/secrets/mozilla.jwt)
 
-const DEBUG=true
+const DEBUG = true
 const CLICK_INTERVALL = 1000
 const DUPLICATE_CLICK_INTERVALL = 1000 * 10
 const debug = (msg) => { DEBUG && console.log(msg); }
@@ -27,6 +28,8 @@ const debug = (msg) => { DEBUG && console.log(msg); }
 const GOOGLE_CONSENT = "[aria-label='Show me the privacy reminder later'],[aria-label='Got it'],[aria-label='No, thanks'],[aria-label='No thanks'],[aria-label='Agree to the use of cookies and other data for the purposes described']"
 const TWITCH_BONUS = ".claimable-bonus__icon.tw-flex"
 const YT_STILL_WATCHING = ".style-scope.yt-button-renderer.style-blue-text.size-default[aria-label='Yes']"
+
+const IS_LIVESTREAM = document.querySelector("yt-live-chat-renderer") != null
 
 /// Note that some pop-ups may are iframes from different domainis (e.g. consent.youtube.com)
 /// to click these requires { "all_frames": true } and the
@@ -58,11 +61,11 @@ async function autoClick(selectors) {
 }
 
 if ( window.location.host.match(".*.(youtube|google).com") ){
-	autoClick([YT_STILL_WATCHING, GOOGLE_CONSENT]);
+	IS_LIVESTREAM || autoClick([YT_STILL_WATCHING, GOOGLE_CONSENT]);
 }
 else if ( window.location.host.match(".*.twitch.com") ){
 	autoClick([TWITCH_BONUS]);
 }
 
 // Initialised
-debug("clickerman is running...");
+debug(`clickerman is${IS_LIVESTREAM ? "" : " not"} running...`);
