@@ -4,8 +4,8 @@
 // @description  Autoclicker for YouTube etc.
 // @author       Kafva
 // @namespace    https://raw.githubusercontent.com/Kafva/
-// @downloadUrl  https://raw.githubusercontent.com/Kafva/clickerman/main/click.js
-// @updateUrl    https://raw.githubusercontent.com/Kafva/clickerman/main/click.js
+// @downloadUrl  https://raw.githubusercontent.com/Kafva/clickerman/main/click.user.js
+// @updateUrl    https://raw.githubusercontent.com/Kafva/clickerman/main/click.user.js
 // @icon         https://i.imgur.com/ijdw1j9.png
 // @include 	 https://*.youtube.com/*
 // @include 	 https://*.google.com/*
