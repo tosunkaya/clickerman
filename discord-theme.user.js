@@ -30,15 +30,25 @@
 // Copied from css/discord.css
 // (Hot-reloading does not track changes to @resources)
 GM_addStyle(`
+/* https://github.com/NYRI4/Comfy/blob/master/_variables.scss */
 #online-tab,div[class^="pageWrapper"] {
-	/* The second selector works in the debug console but not in practice... 
-	 * It works if we use a delay but that does not work if we load the page
-	 * after the event has fired and is not a preferable solution
-	 * */
+	/* The second selector works in the debug console but not in practice... */
 	background-color: #23283d;
 }
 
-/* https://github.com/NYRI4/Comfy/blob/master/_variables.scss */
+
+[data-list-id='guildsnav'] svg foreignObject > div > div > svg > path {
+		d: path("M12.375 3.75C16.7242 3.75 20.25 7.27576 20.25 11.625C20.25 15.9742 16.7242 19.5 12.375 19.5C11.1737 19.5 10.0352 19.231 9.01654 18.75L4.5 19.5L5.25 14.9835C4.76898 13.9648 4.5 12.8263 4.5 11.625C4.5 7.27576 8.02576 3.75 12.375 3.75Z");
+}
+
+
+[data-list-id='guildsnav']	[aria-label='Home'] > div > svg {
+		height: 56px;
+		width: 56px;
+		transform: translate(7%,-5%);
+}
+
+
 .theme-dark {
     --background-tertiary: #101320;
     --background-secondary: #1e2233;
