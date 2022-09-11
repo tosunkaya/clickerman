@@ -22,7 +22,6 @@
 
 const DEBUG = true
 const CLICK_INTERVALL = 1000
-const DUPLICATE_CLICK_INTERVALL = 1000 * 20
 const debug = (msg) => { DEBUG && console.log(msg); }
 
 const GOOGLE_CONSENT = "[aria-label='Show me the privacy reminder later'],[aria-label='Got it'],[aria-label='No, thanks'],[aria-label='No thanks'],[aria-label='Agree to the use of cookies and other data for the purposes described']"
@@ -34,20 +33,12 @@ const YT_STILL_WATCHING = ".style-scope.yt-button-renderer.style-blue-text.size-
 /// domain to appear in the "matches" inside manifest.json
 const auto_click = (selector) => {
 
-	// Only click each element once within a X second interval
-	let clicked = new Set()
-	setInterval( () => {
-		clicked = new Set();
-	}, DUPLICATE_CLICK_INTERVALL)
-
 	const click_all = () => {
 		const btns = document.querySelectorAll(selector);
 		btns?.forEach( (b) => {
-			if ( !clicked.has(b.innerHTML) ) {
 				b.click();
-				clicked.add(b.innerHTML)
+				b.remove();
 				debug(`Clicked: '${b.innerHTML}' based on ${selector}`);
-			}
 		});
 	}
 
