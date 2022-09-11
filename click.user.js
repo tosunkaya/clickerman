@@ -40,27 +40,29 @@ const auto_click = (selectors) => {
 		clicked = new Set();
 	}, DUPLICATE_CLICK_INTERVALL)
 
-	setInterval( () => {
+	const click_all = () => {
 		for (const selector of selectors){
 			const btns = document.querySelectorAll(selector);
-			if (btns) {
-				btns.forEach( (b) => {
-					if ( !clicked.has(b.innerHTML) ) {
-						b.click();
-						clicked.add(b.innerHTML)
-						debug(`Clicked: '${b.innerHTML}' based on ${selector}`);
-					}
-				});
-			}
+			btns?.forEach( (b) => {
+				if ( !clicked.has(b.innerHTML) ) {
+					b.click();
+					clicked.add(b.innerHTML)
+					debug(`Clicked: '${b.innerHTML}' based on ${selector}`);
+				}
+			});
 		}
-	}, CLICK_INTERVALL)
+	}
+
+	// Execute once immediatelly
+	click_all()
+	setInterval(click_all, CLICK_INTERVALL)
 }
 
 const get_agree_button_selector = () => {
 	// The agree button on google has an obfuscated class name
 	let selector = ""
 	if ( document.querySelector("[title='Before you continue to Google Search']") != null ) {
-		document.querySelectorAll("button").forEach( btn => {
+		document.querySelectorAll("button")?.forEach( btn => {
 			// We can't select the div directly since the 'agree' and 'customise'
 			// divs have the same selector
 			btn.querySelectorAll("div").forEach( d => {
@@ -93,6 +95,5 @@ window.onload = () => {
 		(IS_LIVESTREAM ? " (livestream)" : "") +
 		(IS_IFRAME ? " (iframe)" : "")
 	);
-
 }
 
