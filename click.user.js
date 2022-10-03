@@ -18,7 +18,7 @@
 // @exclude      https://*.google.com/recaptcha/*
 // @exclude      https://*.google.com/forms/*
 // @exclude      https://*.google.com/maps/*
-// @grant         GM_addStyle
+// @grant        GM_addStyle
 // ==/UserScript==
 
 // For development:
