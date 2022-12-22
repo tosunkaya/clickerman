@@ -23,19 +23,19 @@
 //  https://github.com/crittermike/shortkeys/blob/master/app/scripts/background.js
 
 window.addEventListener('keydown', (e) => {
-  if (e.shiftKey) { // == With <Shift> ==
-    switch (e.key) {
-      default:
+    if (e.shiftKey) { // == With <Shift> ==
+        switch (e.key) {
+        default:
+        }
+    } else if (e.ctrlKey) { // == With <Control> ==
+        switch (e.key) {
+        case 'h': // Clear search highlight
+            window.getSelection().removeAllRanges();
+            break;
+        }
+    } else { // == Without modifiers ==
+        switch (e.key) {
+        default:
+        }
     }
-  } else if (e.ctrlKey) { // == With <Control> ==
-    switch (e.key) {
-      case 'h': // Clear search highlight
-        window.getSelection().removeAllRanges();
-        break;
-    }
-  } else { // == Without modifiers ==
-    switch (e.key) {
-      default:
-    }
-  }
 })
